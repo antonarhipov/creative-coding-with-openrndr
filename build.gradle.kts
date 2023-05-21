@@ -10,52 +10,53 @@ val applicationMainClass = "TemplateProgramKt"
 
 /**  ## additional ORX features to be added to this project */
 val orxFeatures = setOf<String>(
-//  "orx-boofcv",
+  "orx-boofcv",
     "orx-camera",
 //  "orx-chataigne",
     "orx-color",
     "orx-compositor",
-//  "orx-dnk3",
-//  "orx-easing",
-//  "orx-file-watcher",
-//  "orx-filter-extension",
+    "orx-dnk3",
+    "orx-easing",
+    "orx-envelopes",
+    "orx-file-watcher",
+//    "orx-filter-extension",
     "orx-fx",
 //  "orx-glslify",
-//  "orx-gradient-descent",
+    "orx-gradient-descent",
 //    "orx-git-archiver",
     "orx-gui",
     "orx-image-fit",
-//  "orx-integral-image",
-//  "orx-interval-tree",
-//  "orx-jumpflood",
-//  "orx-kdtree",
-//  "orx-keyframer",      
+    "orx-integral-image",
+    "orx-interval-tree",
+    "orx-jumpflood",
+    "orx-kdtree",
+  "orx-keyframer",
 //  "orx-kinect-v1",
 //  "orx-kotlin-parser",
-//  "orx-mesh-generators",
-//  "orx-midi",
-//  "orx-minim",
+    "orx-mesh-generators",
+    "orx-midi",
+  "orx-minim",
     "orx-no-clear",
     "orx-noise",
 //  "orx-obj-loader",
     "orx-olive",
-//  "orx-osc",
-//  "orx-palette",
+    "orx-osc",
+    "orx-palette",
     "orx-panel",
-//  "orx-parameters",
-//  "orx-poisson-fill",
-//  "orx-rabbit-control",
-//  "orx-realsense2",
-//  "orx-runway",
+    "orx-parameters",
+    "orx-poisson-fill",
+    "orx-rabbit-control",
+    "orx-realsense2",
+    "orx-runway",
     "orx-shade-styles",
-//  "orx-shader-phrases",
+  "orx-shader-phrases",
     "orx-shapes",
-//  "orx-syphon",
-//  "orx-temporal-blur",
+  "orx-syphon",
+  "orx-temporal-blur",
 //  "orx-tensorflow",    
-//  "orx-time-operators",
-//  "orx-timer",
-//  "orx-triangulation",
+    "orx-time-operators",
+    "orx-timer",
+    "orx-triangulation",
     "orx-video-profiles",
     "orx-view-box",
 )
@@ -112,9 +113,11 @@ dependencies {
         Logging.NONE -> {
             runtimeOnly(libs.slf4j.nop)
         }
+
         Logging.SIMPLE -> {
             runtimeOnly(libs.slf4j.simple)
         }
+
         Logging.FULL -> {
             runtimeOnly(libs.log4j.slf4j2)
             runtimeOnly(libs.log4j.core)
@@ -172,6 +175,7 @@ tasks {
                         into("build/jpackage/openrndr-application/data")
                     }
                 }
+
                 OperatingSystem.MAC_OS -> {
                     copy {
                         from("data") {
@@ -240,11 +244,13 @@ class Openrndr {
             "aarch64", "arm-v8" -> "macos-arm64"
             else -> "macos"
         }
+
         OperatingSystem.LINUX -> when (val h = DefaultNativePlatform("current").architecture.name) {
             "x86-64" -> "linux-x64"
             "aarch64" -> "linux-arm64"
             else -> throw IllegalArgumentException("architecture not supported: $h")
         }
+
         else -> throw IllegalArgumentException("os not supported")
     }
 
@@ -287,6 +293,7 @@ class Openrndr {
         }
     }
 }
+
 val openrndr = Openrndr()
 
 if (properties["openrndr.tasks"] == "true") {
