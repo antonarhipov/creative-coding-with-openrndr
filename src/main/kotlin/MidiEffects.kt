@@ -11,6 +11,7 @@ import org.openrndr.extra.fx.distort.Fisheye
 import org.openrndr.extra.fx.distort.Lenses
 import org.openrndr.extra.gui.GUI
 import org.openrndr.extra.gui.addTo
+import org.openrndr.extra.midi.MidiConsole
 import org.openrndr.extra.midi.bindMidiControl
 import org.openrndr.extra.midi.openMidiDevice
 import org.openrndr.extra.noise.uniform
@@ -30,7 +31,6 @@ import org.openrndr.math.Vector2
 
 fun main() {
 
-
     application {
         configure {
             width = 1600
@@ -40,7 +40,6 @@ fun main() {
         }
 
         oliveProgram {
-//        listMidiDevices().forEach(::println)
 
             val gui = GUI().apply {
                 name = "Settings"
@@ -48,10 +47,10 @@ fun main() {
 
             val midi = openMidiDevice("Arturia BeatStep")
 
-//            extend(MidiConsole()) {
-//                register(midi)
-//                historySize = 10
-//            }
+            extend(MidiConsole()) {
+                register(midi)
+                historySize = 10
+            }
 
             val tracker = ADSRTracker(this)
             tracker.addTo(gui)

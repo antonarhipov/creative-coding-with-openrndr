@@ -6,11 +6,10 @@ import org.openrndr.draw.DrawPrimitive
 import org.openrndr.draw.shadeStyle
 import org.openrndr.extra.camera.Orbital
 import org.openrndr.extra.color.presets.ANTIQUE_WHITE
-import org.openrndr.math.Vector3
-import org.openrndr.extra.meshgenerators.boxMesh
 import org.openrndr.extra.meshgenerators.dodecahedronMesh
 import org.openrndr.ffmpeg.H264Profile
 import org.openrndr.ffmpeg.ScreenRecorder
+import org.openrndr.math.Vector3
 
 fun main() = application {
     configure {

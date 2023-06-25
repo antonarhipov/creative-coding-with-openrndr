@@ -1,12 +1,7 @@
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.extra.midi.MidiTransceiver
 import org.openrndr.extra.midi.openMidiDevice
 import org.openrndr.extra.shapes.regularPolygon
-import org.openrndr.extra.shapes.regularPolygonBeveled
-import org.openrndr.math.Vector2
-import org.openrndr.shape.ShapeContour
-import kotlin.random.Random
 
 fun main() = application {
 
